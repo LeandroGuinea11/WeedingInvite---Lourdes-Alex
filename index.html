@@ -7,7 +7,7 @@
   <title>Invitación de Boda - Lourdes & Alexander</title>
   <meta name="description" content="Acompáñanos a celebrar nuestra boda el 19 de Diciembre de 2026." />
 
-  <!-- Metatags Open Graph (URL corregida sin el .com extra) -->
+  <!-- Metatags Open Graph para vista previa al compartir -->
   <meta property="og:title" content="Invitación de Boda - Lourdes & Alexander" />
   <meta property="og:description" content="Nos casamos y nos encantaría contar contigo en nuestro día especial. 19 de Diciembre de 2026." />
   <meta property="og:image" content="https://lourdes-and-alex-weeding.vercel.app/images/foto11.jpg" />
@@ -25,3 +25,829 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/iniciales2.png" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Configuración de colores e identidad -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F7F4EE',
+            'paper-dark': '#EDE7DD',
+            'paper-border': '#DED6C9',
+            gold: {
+              300: '#E5C978',
+              400: '#D4AF37',
+              500: '#C59B27',
+              600: '#A37E1C',
+            },
+            taupe: '#7D7065',
+            'taupe-light': '#9C8E82',
+            charcoal: '#2C2A29',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            sans: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Fondo principal de la web */
+    body {
+      background-image: url('images/fondo3.png');
+      background-repeat: repeat;
+      background-position: top center;
+      background-size: auto;
+      color: #2C2A29;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Fondo del sobre images/sobre2.png ocupando el 100% del lienzo */
+    .envelope-screen-bg {
+      background-image: url('images/sobre2.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    /* Efecto de foto impresa con sombra realista y esquina doblada */
+    .photo-frame {
+      position: relative;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px 8px 12px 8px;
+      box-shadow: 0 8px 20px -4px rgba(60, 50, 40, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border: 1px solid #EAE3D9;
+      border-radius: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 16px 16px;
+      border-color: transparent transparent rgba(237, 231, 221, 0.9) #C8BDAE;
+      box-shadow: -2px -2px 3px rgba(0,0,0,0.15);
+    }
+
+    /* Fotos clickeables para zoom */
+    .zoomable-photo {
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .zoomable-photo:hover {
+      transform: scale(1.02);
+      filter: brightness(1.03);
+    }
+
+    /* Estilos para el sello de cera */
+    .wax-seal-img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.25));
+      transition: transform 0.2s ease;
+    }
+
+    .wax-seal-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Solapa del sobre superior para frase */
+    .envelope-flap {
+      background: linear-gradient(135deg, #E6DDD1 0%, #D8CBBF 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      filter: drop-shadow(0 5px 8px rgba(60, 50, 40, 0.18));
+    }
+
+    /* Tarjeta con arco superior para el Dress Code */
+    .arch-card {
+      border-top-left-radius: 120px;
+      border-top-right-radius: 120px;
+    }
+
+    /* Efecto interactivo para la imagen RSVP */
+    .rsvp-img-interactive {
+      cursor: pointer;
+      filter: drop-shadow(0px 10px 18px rgba(44, 42, 41, 0.20));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    .rsvp-img-interactive:hover {
+      transform: translateY(-4px) scale(1.03);
+      filter: drop-shadow(0px 14px 24px rgba(44, 42, 41, 0.28));
+    }
+
+    /* Animación del sello de cera inicial */
+    .pulse-seal {
+      animation: pulseSeal 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseSeal {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        filter: drop-shadow(0px 6px 14px rgba(0,0,0,0.35));
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.06);
+        filter: drop-shadow(0px 10px 22px rgba(197,155,39,0.5));
+      }
+    }
+
+    /* Animación de salida de la carta desde el sobre */
+    .slide-out-card {
+      animation: slideUpFromEnvelope 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideUpFromEnvelope {
+      0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.88);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Animaciones suaves al hacer scroll */
+    .reveal-left, .reveal-right {
+      opacity: 0;
+      transition: all 2.0s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal-left {
+      transform: translateX(-35px); 
+    }
+
+    .reveal-right {
+      transform: translateX(35px); 
+    }
+
+    .reveal-left.active, .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex justify-center items-center py-0 sm:py-6">
+
+  <!-- ================================================================= -->
+  <!-- PRIMERA VISTA: SOBRE QUE OCULTA EL 100% DE LA PANTALLA            -->
+  <!-- ================================================================= -->
+  <div id="envelopeOverlay" 
+       onclick="openEnvelopeStep2()" 
+       class="fixed inset-0 w-screen h-screen z-50 flex flex-col justify-between items-center text-center py-8 px-6 bg-[#FAF8F5] envelope-screen-bg transition-opacity duration-700 cursor-pointer select-none overflow-hidden">
+    
+    <!-- Textos superiores centrados dentro del sobre -->
+    <div class="space-y-2 pt-28 sm:pt-36 z-10">
+      <br>
+      <br/>
+      <p class="font-script text-5xl sm:text-6xl text-[#3D332A] leading-tight drop-shadow-xs">Lourdes &<br/>Alexander</p>
+    </div>
+
+    <!-- SELLO DE CERA INTERACTIVO -->
+    <div id="sealContainer" class="absolute top-[73%] left-1/2 z-20 pulse-seal">
+      <img src="images/sello.png" 
+           alt="Sello de Cera Boda" 
+           class="w-44 h-44 sm:w-52 sm:h-52 object-contain filter drop-shadow-2xl"
+           onerror="this.onerror=null; this.src='https://placehold.co/200x200/7D7065/FFFFFF?text=A%7CL';" />
+    </div>
+
+    <!-- TARJETA PERGAMINO QUE EMERGE DEL SOBRE AL DAR CLICK -->
+    <div id="envelopeStep2" onclick="event.stopPropagation(); enterInvitation();" class="hidden absolute inset-4 sm:inset-10 z-30 bg-[#F7F4EE] border border-paper-border rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col items-center justify-center space-y-6 cursor-pointer select-none slide-out-card max-w-md mx-auto">
+      
+      <p class="text-[10px] uppercase tracking-[0.2em] text-taupe font-semibold text-center">TIENES UNA INVITACIÓN ESPECIAL DE</p>
+      
+      <h2 class="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-wide text-center">
+        Lourdes & Alexander
+      </h2>
+
+      <div class="w-3/4 border-t border-paper-border/80 my-1"></div>
+
+      <p class="font-serif italic text-sm text-taupe leading-relaxed text-center">
+        Una historia de amor, un nuevo comienzo.
+      </p>
+
+      <button class="mt-2 bg-white/90 hover:bg-gold-500 hover:text-white border border-paper-border text-charcoal font-semibold text-[10px] uppercase tracking-[0.25em] px-8 py-3.5 rounded-xl transition shadow-xs">
+        ABRE NUESTRA INVITACIÓN
+      </button>
+
+    </div>
+
+    <!-- Texto inferior de apertura -->
+    <div id="clickText" class="pb-6 z-10">
+      <p class="text-[11px] uppercase tracking-[0.3em] text-[#5C5044] font-bold animate-pulse drop-shadow-xs">CLICK TO OPEN</p>
+    </div>
+
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL DE LA INVITACIÓN -->
+  <main class="w-full max-w-[430px] min-h-screen shadow-2xl overflow-hidden relative border-x border-paper-border/60 flex flex-col px-4 py-8 space-y-12 bg-transparent">
+
+    <!-- ================================================================= -->
+    <!-- 1. BLOQUE DE LA PRIMERA COLUMNA (SOBRE, FRASE, MÚSICA, FOTOS)     -->
+    <!-- ================================================================= -->
+
+    <!-- SOBRE DESPLEGABLE CON FRASE BÍBLICA -->
+    <section class="w-full relative pt-2 reveal-left">
+      <div class="relative w-full bg-paper-dark/40 backdrop-blur-xs border border-paper-border rounded-t-lg pt-12 pb-5 px-5 text-center shadow-xs">
+        
+        <!-- Solapa del sobre superior -->
+        <div class="absolute top-0 left-0 right-0 h-16 envelope-flap"></div>
+        
+        <!-- 1. SELLO DE CERA PERSONALIZADO (IMAGEN) -->
+        <div class="absolute top-7 left-1/2 -translate-x-1/2 z-20">
+          <img src="images/sello.png" 
+               alt="Sello de Cera" 
+               class="wax-seal-img" 
+               onerror="this.onerror=null; this.src='https://placehold.co/100x100/D4AF37/FFFFFF?text=A%7CL';" />
+        </div>
+
+        <!-- Tarjeta interior estilo pergamino semitransparente -->
+        <div class="mt-4 bg-white/70 backdrop-blur-xs p-5 rounded border border-paper-border/80 shadow-inner space-y-2 flex flex-col items-center">
+          <p class="font-serif italic text-xs leading-relaxed text-charcoal/90">
+            "Uno solo puede ser vencido, pero dos pueden resistir. La cuerda de tres hilos no se rompe fácilmente."
+          </p>
+          <p class="text-[9px] tracking-widest text-taupe font-semibold uppercase pt-1">Eclesiastés 4:12</p>
+          
+          <div class="pt-1 flex justify-center items-center">
+            <img src="images/iniciales2.png" 
+                 alt="Iniciales Alex y Lourdes" 
+                 class="h-9 w-auto object-contain" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/D4AF37/FFFFFF?text=A%7CL';" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOTO DE PAREJA 1 -->
+    <section class="w-full px-1 reveal-right">
+      <div class="photo-frame">
+        <img src="images/foto1.jpg" 
+             alt="Alex y Lourdes Foto 1" 
+             onclick="openLightbox(this.src, this.alt)"
+             fetchpriority="high"
+             class="w-full max-h-[420px] object-contain rounded-xs zoomable-photo"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800';" />
+      </div>
+    </section>
+
+    <!-- 2. TARJETA ¡NOS CASAMOS! -->
+    <section class="w-full relative rounded-xl overflow-hidden border border-paper-border shadow-md reveal-left">
+      <div class="relative w-full px-4 sm:px-6 py-12 sm:py-14 min-h-[240px] flex flex-col justify-center items-center text-center bg-cover bg-center" style="background-image: url('images/fondo2.jpg');">
+        
+        <div class="absolute inset-0 bg-paper/50 backdrop-blur-[0.5px]"></div>
+
+        <div class="relative z-10 space-y-1 w-full flex flex-col items-center justify-center text-center">
+          <span class="text-[20px] uppercase tracking-[0.35em] text-taupe font-bold block mb-2">¡NOS CASAMOS!</span>
+          
+          <div class="my-2 flex justify-center items-center">
+            <img src="images/iniciales2.png" 
+                 alt="Iniciales Alex y Lourdes" 
+                 class="h-16 w-auto object-contain" 
+                 loading="lazy"
+                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/D4AF37/FFFFFF?text=A%7CL';" />
+          </div>
+
+          <div class="flex flex-col items-center justify-center font-serif text-2xl sm:text-3xl uppercase font-semibold text-charcoal pt-1 space-y-0.5 text-center w-full">
+            <span class="tracking-widest text-charcoal text-center block w-full">LOURDES & ALEXANDER</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPRODUCTOR DE MÚSICA -->
+    <section class="w-full reveal-right">
+      <div class="photo-frame mb-3">
+        <img src="images/foto8.jpg" 
+             alt="Alex y Lourdes Foto 2" 
+             onclick="openLightbox(this.src, this.alt)"
+             loading="lazy"
+             class="w-full max-h-[420px] object-contain rounded-xs zoomable-photo"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" />
+      </div>
+
+      <div class="bg-white/60 backdrop-blur-xs border border-paper-border rounded-lg p-4 text-center shadow-xs space-y-3">
+        <p class="text-xs font-serif text-charcoal/80 italic">Reproduce nuestra canción</p>
+
+        <audio id="weddingAudio" src="music/Yo Puedo Hacer Ricardo Montaner.mp3" preload="metadata"></audio>
+
+        <div class="flex flex-col items-center space-y-2">
+          <div class="flex items-center space-x-5 text-taupe">
+            <button class="hover:text-charcoal transition" aria-label="Aleatorio"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i></button>
+            <button class="hover:text-charcoal transition" aria-label="Anterior"><i data-lucide="skip-back" class="w-3.5 h-3.5"></i></button>
+            
+            <button id="playBtn" onclick="togglePlay()" aria-label="Reproducir o Pausar" class="w-10 h-10 bg-paper-dark/80 backdrop-blur-xs text-charcoal rounded-full flex items-center justify-center hover:bg-gold-400 hover:text-white transition shadow-sm">
+              <i data-lucide="play" class="w-4 h-4 ml-0.5"></i>
+            </button>
+
+            <button class="hover:text-charcoal transition" aria-label="Siguiente"><i data-lucide="skip-forward" class="w-3.5 h-3.5"></i></button>
+            <button class="hover:text-charcoal transition" aria-label="Repetir"><i data-lucide="repeat" class="w-3.5 h-3.5"></i></button>
+          </div>
+
+          <div class="w-full flex items-center space-x-2 text-[9px] text-taupe font-mono mt-1">
+            <span id="currentTime">0:00</span>
+            <div class="flex-1 bg-paper-dark/60 h-1.5 rounded-full overflow-hidden cursor-pointer" onclick="seekAudio(event)">
+              <div id="audioProgress" class="bg-gold-500 h-full w-0 transition-all"></div>
+            </div>
+            <span id="totalTime">0:00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 2. BLOQUE DE LA SEGUNDA COLUMNA (FECHA, CONTADOR, UBICACIÓN, DRESS CODE) -->
+    <!-- ================================================================= -->
+
+    <!-- BLOQUE DE FECHA CON ILUSTRACIÓN DE NOVIOS -->
+    <section class="w-full bg-paper-dark/30 backdrop-blur-xs border border-paper-border rounded-xl p-5 text-center shadow-xs space-y-3 reveal-left">
+      <p class="text-xs text-taupe italic leading-relaxed px-2">
+        Con la bendición de Dios y nuestros padres tenemos el gusto de invitarlos a celebrar nuestro matrimonio civil el día
+      </p>
+
+      <div class="border-y border-gold-400/50 py-3 flex justify-evenly items-center px-4">
+        <span class="text-[11px] uppercase tracking-widest text-charcoal font-semibold">SÁBADO</span>
+        <span class="text-4xl font-serif font-bold text-gold-600">19</span>
+        <span class="text-[11px] uppercase tracking-widest text-charcoal font-semibold">2026</span>
+      </div>
+      <p class="text-xs uppercase tracking-[0.25em] text-taupe font-medium">DICIEMBRE</p>
+
+      <div class="pt-2 flex justify-center items-center">
+        <img src="images/boceto.png" 
+             alt="Ilustración Novios" 
+             loading="lazy"
+             class="w-20 h-auto object-contain max-h-24 opacity-80 hover:opacity-100 transition" 
+             onerror="this.onerror=null; this.src='https://placehold.co/120x120/EDE7DD/7D7065?text=Novios';" />
+      </div>
+    </section>
+
+    <!-- 3. PREPÁRATE / CUENTA REGRESIVA CON SELLO -->
+    <section class="w-full relative rounded-xl border border-paper-border bg-paper-dark/20 backdrop-blur-xs pt-7 reveal-right">
+      
+      <div class="absolute -top-7 left-1/2 -translate-x-1/2 z-30">
+        <img src="images/sello.png" 
+             alt="Sello de Cera" 
+             class="wax-seal-img" 
+             loading="lazy"
+             onerror="this.onerror=null; this.src='https://placehold.co/100x100/D4AF37/FFFFFF?text=A%7CL';" />
+      </div>
+
+      <div class="bg-paper-dark/40 backdrop-blur-xs p-5 text-center relative z-10 border-b border-paper-border pt-6 pb-6 rounded-t-xl">
+        <h3 class="text-[10px] uppercase tracking-[0.25em] text-taupe font-bold mt-1">PREPÁRATE</h3>
+        <p class="font-script text-3xl text-gold-600 my-1">Faltan</p>
+
+        <div class="grid grid-cols-4 gap-1.5 sm:gap-2 pt-3 w-full px-1">
+          <div class="bg-white/60 backdrop-blur-xs p-2 sm:p-2.5 rounded border border-paper-border flex flex-col items-center justify-center min-w-0">
+            <span id="timerDays" class="block text-xl sm:text-2xl font-serif font-bold text-charcoal leading-none mb-1">00</span>
+            <span class="text-[8px] sm:text-[9px] tracking-wider uppercase text-taupe font-semibold">Días</span>
+          </div>
+          <div class="bg-white/60 backdrop-blur-xs p-2 sm:p-2.5 rounded border border-paper-border flex flex-col items-center justify-center min-w-0">
+            <span id="timerHours" class="block text-xl sm:text-2xl font-serif font-bold text-charcoal leading-none mb-1">00</span>
+            <span class="text-[8px] sm:text-[9px] tracking-wider uppercase text-taupe font-semibold">Horas</span>
+          </div>
+          <div class="bg-white/60 backdrop-blur-xs p-2 sm:p-2.5 rounded border border-paper-border flex flex-col items-center justify-center min-w-0">
+            <span id="timerMinutes" class="block text-xl sm:text-2xl font-serif font-bold text-charcoal leading-none mb-1">00</span>
+            <span class="text-[8px] sm:text-[9px] tracking-wider uppercase text-taupe font-semibold">Min</span>
+          </div>
+          <div class="bg-white/60 backdrop-blur-xs p-2 sm:p-2.5 rounded border border-paper-border flex flex-col items-center justify-center min-w-0">
+            <span id="timerSeconds" class="block text-xl sm:text-2xl font-serif font-bold text-charcoal leading-none mb-1">00</span>
+            <span class="text-[8px] sm:text-[9px] tracking-wider uppercase text-taupe font-semibold">Seg</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 4. UBICACIÓN Y CEREMONIA -->
+    <section class="w-full bg-paper-dark/30 backdrop-blur-xs border border-paper-border rounded-xl pt-5 px-5 pb-0 relative shadow-xs reveal-left overflow-hidden">
+      
+      <div class="pr-16 space-y-2 pb-5">
+        <div class="flex items-center space-x-2">
+          <svg class="w-6 h-6 text-gold-500 flex-shrink-0" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="50" y1="12" x2="50" y2="18" stroke-width="4"/>
+            <line x1="33" y1="19" x2="38" y2="23" stroke-width="4"/>
+            <line x1="67" y1="19" x2="62" y2="23" stroke-width="4"/>
+            <path d="M50 35 C45 27, 36 27, 36 34 C36 41, 50 48, 50 48 C50 48, 64 41, 64 34 C64 27, 55 27, 50 35 Z" fill="none" stroke-width="4"/>
+            <circle cx="38" cy="64" r="20" stroke-width="4.5"/>
+            <path d="M26 53 A 16 16 0 0 1 45 53" stroke-width="2.5" opacity="0.6"/>
+            <circle cx="58" cy="64" r="20" stroke-width="4.5"/>
+            <path d="M46 53 A 16 16 0 0 1 65 53" stroke-width="2.5" opacity="0.6"/>
+          </svg>
+          <h4 class="text-[10px] uppercase tracking-widest text-gold-600 font-bold">CEREMONIA</h4>
+        </div>
+        <p class="text-[20px] font-serif font-semibold text-charcoal"> Las Brumas Grill & Café </p>
+        <p class="text-[15px] text-taupe">Calle al Volcán KM 19 1/2, San Salvador</p>
+        <p class="text-[15px] text-taupe">9:00 AM</p>
+        
+        <a href="https://maps.app.goo.gl/Ki3r6TDgTkF2h7H36" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center space-x-1 bg-white/70 backdrop-blur-xs text-charcoal border border-paper-border text-[9px] uppercase tracking-wider px-3 py-1.5 rounded mt-2 font-medium hover:bg-gold-500 hover:text-white transition shadow-2xs">
+          <i data-lucide="map-pin" class="w-3 h-3 text-gold-600 group-hover:text-white"></i>
+          <span>VER UBICACIÓN EN GOOGLE MAPS</span>
+        </a>
+      </div>
+
+      <div class="absolute right-4 top-10 w-11 h-20 border border-gold-400 rounded-full flex flex-col items-center justify-center bg-paper-dark/60 backdrop-blur-xs text-charcoal shadow-2xs p-1 z-10">
+        <img src="images/iniciales2.png" 
+             alt="Sello de Cera" 
+             class="wax-seal-img" 
+             loading="lazy"
+             onerror="this.onerror=null; this.src='https://placehold.co/100x100/D4AF37/FFFFFF?text=A%7CL';" />
+      </div>
+
+      <div class="w-full pt-3 border-t border-paper-border/50">
+        <img src="images/lugar.jpg" 
+             alt="Lugar de la ceremonia - Las Brumas" 
+             onclick="openLightbox(this.src, this.alt)"
+             loading="lazy"
+             class="w-full max-h-[320px] object-contain rounded-b-lg mx-auto zoomable-photo"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1548625361-1854c1d019f6?auto=format&fit=crop&q=80&w=800';" />
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="w-full bg-paper-dark/40 backdrop-blur-xs border border-paper-border arch-card pt-8 pb-6 px-6 text-center shadow-xs reveal-left">
+      <h3 class="font-script text-4xl text-gold-600 mb-2">Dress Code</h3>
+      <h2 class="font-script text-3xl text-gold-600 mb-6">Vestimenta Cóctel</h2>
+
+      <div class="grid grid-cols-2 gap-4 mb-5">
+        <!-- Caballeros -->
+        <div class="flex flex-col items-center space-y-2">
+          <img src="images/iconoc.png" 
+               alt="Icono Caballeros" 
+               loading="lazy"
+               class="h-18 w-auto max-w-[80px] object-contain filter drop-shadow-xs" 
+               onerror="this.onerror=null; this.src='https://placehold.co/80x80/7D7065/FFFFFF?text=C';" />
+          <p class="font-script text-xl text-charcoal">Caballeros</p>
+          <p class="text-[11px] text-taupe leading-tight">Pantalón de vestir, camisa formal, saco o blazer.</p>
+          <p class="text-[10px] text-taupe italic border-t border-paper-border/60 pt-3 w-full">
+            Nota: El color azul marino está reservado exclusivamente para el novio.
+          </p>
+        </div>
+
+        <!-- Damas -->
+        <div class="flex flex-col items-center space-y-2">
+          <img src="images/iconod.png" 
+               alt="Icono Damas" 
+               loading="lazy"
+               class="h-18 w-auto max-w-[80px] object-contain filter drop-shadow-xs" 
+               onerror="this.onerror=null; this.src='https://placehold.co/80x80/7D7065/FFFFFF?text=D';" />
+          <p class="font-script text-xl text-charcoal">Damas</p>
+          <p class="text-[11px] text-taupe leading-tight">Vestido corto o midi elegante, o conjunto formal acorde a la ocasión.</p>
+          <p class="text-[10px] text-taupe italic border-t border-paper-border/60 pt-3 w-full">
+            Nota: El color blanco o tonos similares está reservado exclusivamente para la novia.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 3. BLOQUE DE LA TERCERA COLUMNA (LLUVIA SOBRES, SIN NIÑOS, RSVP)  -->
+    <!-- ================================================================= -->
+
+    <!-- LLUVIA DE SOBRES -->
+    <section class="w-full bg-paper-dark/30 backdrop-blur-xs border border-paper-border rounded-xl p-5 text-center shadow-xs reveal-left">
+      <div class="flex justify-center mb-1">
+        <div class="w-10 h-10 bg-white/70 backdrop-blur-xs rounded-full flex items-center justify-center text-gold-600 border border-gold-400/30 shadow-2xs">
+          <i data-lucide="gift" class="w-5 h-5"></i>
+        </div>
+      </div>
+      <h3 class="font-script text-3xl text-gold-600 mb-1">Regalos</h3>
+      <p class="text-xs text-taupe leading-relaxed">
+        Agradecemos sus muestras de cariño en regalo de sobres.
+      </p>
+    </section>
+
+    <!-- FOTO DE PAREJA 3 -->
+    <section class="w-full px-1 reveal-right">
+      <div class="photo-frame">
+        <img src="images/foto9.jpg" 
+             alt="Alex y Lourdes Foto 3" 
+             onclick="openLightbox(this.src, this.alt)"
+             loading="lazy"
+             class="w-full max-h-[420px] object-contain rounded-xs zoomable-photo"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" />
+      </div>
+    </section>
+
+    <!-- SECCIÓN INTERCALADA RSVP Y SIN NIÑOS -->
+    <section class="w-full relative py-2 reveal-left">
+      <div class="flex flex-row items-center justify-center relative w-full">
+        
+        <div class="w-[62%] bg-[#F3EFEA] border border-paper-border rounded-lg p-4 pt-8 pr-6 relative text-center flex flex-col items-center justify-between shadow-xs z-10">
+          
+          <div class="absolute -top-6 left-1/2 -translate-x-1/2 z-30">
+            <img src="images/sello.png" 
+                 alt="Sello de Cera" 
+                 class="wax-seal-img" 
+                 loading="lazy"
+                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/D4AF37/FFFFFF?text=A%7CL';" />
+          </div>
+
+          <div class="space-y-1.5 mt-1 w-full">
+            <p class="text-[10px] text-taupe leading-relaxed italic px-1">
+              Confirmar antes del 19 de Noviembre de 2026.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-paper-border/60 w-full mt-3">
+            <p class="text-[7.5px] uppercase tracking-widest text-charcoal font-semibold">ESPERAMOS CONTAR CON SU PRESENCIA</p>
+            <p class="font-script text-xl text-gold-600 mt-0.5">¡Muchas Gracias!</p>
+          </div>
+        </div>
+
+        <div class="w-[45%] -ml-[8%] z-20 flex justify-center items-center">
+          <img src="images/rsvp.png" 
+               alt="RSVP Confirmar Asistencia" 
+               onclick="openRSVP()" 
+               loading="lazy"
+               class="w-full h-auto object-contain rsvp-img-interactive" 
+               onerror="this.onerror=null; this.src='https://placehold.co/200x320/E4DFD7/7D7065?text=RSVP';" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALERÍA FINAL DE FOTOS -->
+    <section class="w-full px-1 space-y-5">
+      <div class="photo-frame reveal-right">
+        <img src="images/foto7.jpg" 
+             alt="Alex y Lourdes Foto Galería 1" 
+             onclick="openLightbox(this.src, this.alt)"
+             loading="lazy"
+             class="w-full max-h-[420px] object-contain rounded-xs zoomable-photo"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&q=80&w=800';" />
+      </div>
+
+      <div class="photo-frame reveal-left">
+        <img src="images/foto2.jpg" 
+             alt="Alex y Lourdes Foto Galería 2" 
+             onclick="openLightbox(this.src, this.alt)"
+             loading="lazy"
+             class="w-full max-h-[420px] object-contain rounded-xs zoomable-photo"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800';" />
+      </div>
+    </section>
+
+    <!-- FOOTER FINAL -->
+    <footer class="pt-6 pb-2 text-center border-t border-paper-border/60 w-full reveal-right">
+      <p class="font-script text-3xl text-gold-600">Lourdes & Alexander</p>
+      <p class="text-[9px] tracking-widest text-taupe uppercase mt-1">19 . 12 . 2026</p>
+    </footer>
+
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- MODAL FORMULARIO CONFIRMACIÓN RSVP POR WHATSAPP -->
+  <!-- ================================================================= -->
+  <div id="rsvpModal" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#F7F4EE] bg-opacity-100 border border-paper-border w-full max-w-sm rounded-2xl p-6 shadow-2xl relative">
+      <button onclick="closeRSVP()" aria-label="Cerrar modal" class="absolute top-4 right-4 text-taupe hover:text-charcoal p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <h3 class="font-serif text-2xl text-charcoal font-semibold text-center mb-1">Confirmar Asistencia</h3>
+      <p class="text-xs text-taupe text-center mb-4">Nos encantará contar contigo en nuestro día especial</p>
+
+      <form onsubmit="sendWhatsApp(event)" class="space-y-3">
+        <div>
+          <label for="guestName" class="block text-[10px] uppercase tracking-wider text-taupe font-semibold mb-1">Nombre Completo</label>
+          <input type="text" required id="guestName" placeholder="Ej. Ana María López" class="w-full text-xs p-2.5 rounded border border-paper-border bg-white focus:outline-none focus:border-gold-500" />
+        </div>
+
+        <div>
+          <label for="guestAttendance" class="block text-[10px] uppercase tracking-wider text-taupe font-semibold mb-1">¿Asistirás al evento?</label>
+          <select id="guestAttendance" class="w-full text-xs p-2.5 rounded border border-paper-border bg-white focus:outline-none focus:border-gold-500">
+            <option value="Sí, asistiré con mucho gusto">¡Sí, asistiré con mucho gusto!</option>
+            <option value="Lamentablemente no podré asistir">Lamentablemente no podré asistir</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-white font-medium text-xs py-3 rounded-full uppercase tracking-wider transition shadow-sm mt-2 flex items-center justify-center space-x-2">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Enviar a WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- LIGHTBOX PARA VER FOTOS EN GRANDE -->
+  <!-- ================================================================= -->
+  <div id="imageLightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" aria-label="Cerrar imagen" class="absolute top-4 right-4 text-white hover:text-gold-300 z-50 bg-black/40 p-2 rounded-full">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <img id="lightboxImg" src="" alt="Foto en grande" class="max-w-full max-h-[90vh] object-contain rounded-md shadow-2xl border border-white/20" onclick="event.stopPropagation()" />
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Inicializar iconos
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+
+    // Abrir el sobre y desplegar tarjeta
+    function openEnvelopeStep2() {
+      const step2 = document.getElementById('envelopeStep2');
+      const sealContainer = document.getElementById('sealContainer');
+      const clickText = document.getElementById('clickText');
+      
+      sealContainer.style.opacity = '0';
+      sealContainer.style.pointerEvents = 'none';
+      if (clickText) clickText.style.opacity = '0';
+
+      step2.classList.remove('hidden');
+    }
+
+    // Ocultar primera vista y posicionar scroll en el inicio absoluto
+    function enterInvitation() {
+      const overlay = document.getElementById('envelopeOverlay');
+      overlay.classList.add('opacity-0');
+      
+      // Forzar posición en la parte superior de la página
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+      }, 700);
+    }
+
+    // Scroll reveal
+    document.addEventListener("DOMContentLoaded", function() {
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.10
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target); 
+          }
+        });
+      }, observerOptions);
+
+      const animatedElements = document.querySelectorAll('.reveal-left, .reveal-right');
+      animatedElements.forEach(el => observer.observe(el));
+    });
+
+    // Cuenta regresiva
+    const targetDate = new Date("December 19, 2026 09:00:00").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById("timerDays").innerText = "00";
+        document.getElementById("timerHours").innerText = "00";
+        document.getElementById("timerMinutes").innerText = "00";
+        document.getElementById("timerSeconds").innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("timerDays").innerText = days < 10 ? '0' + days : days;
+      document.getElementById("timerHours").innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById("timerMinutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById("timerSeconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Reproductor de audio
+    const audio = document.getElementById('weddingAudio');
+    const playBtn = document.getElementById('playBtn');
+    const progressBar = document.getElementById('audioProgress');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalTimeEl = document.getElementById('totalTime');
+
+    audio.onloadedmetadata = function() {
+      totalTimeEl.innerText = formatTime(audio.duration);
+    };
+
+    function updatePlayIcon(isPlaying) {
+      if (isPlaying) {
+        playBtn.innerHTML = '<i data-lucide="pause" class="w-4 h-4"></i>';
+      } else {
+        playBtn.innerHTML = '<i data-lucide="play" class="w-4 h-4 ml-0.5"></i>';
+      }
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          updatePlayIcon(true);
+        }).catch(e => console.log('Audio playback error', e));
+      } else {
+        audio.pause();
+        updatePlayIcon(false);
+      }
+    }
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return "0:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    audio.ontimeupdate = function() {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        currentTimeEl.innerText = formatTime(audio.currentTime);
+        totalTimeEl.innerText = formatTime(audio.duration);
+      }
+    };
+
+    audio.onended = function() {
+      updatePlayIcon(false);
+    };
+
+    function seekAudio(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickPosition = (e.clientX - rect.left) / rect.width;
+      if (audio.duration) {
+        audio.currentTime = clickPosition * audio.duration;
+      }
+    }
+
+    // RSVP
+    function openRSVP() {
+      document.getElementById('rsvpModal').classList.remove('hidden');
+    }
+
+    function closeRSVP() {
+      document.getElementById('rsvpModal').classList.add('hidden');
+    }
+
+    function sendWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value;
+      const attendance = document.getElementById('guestAttendance').value;
+
+      const phone = "50366761271"; 
+
+      const message = `¡Hola Alex y Lourdes!%0A%0AConfirmación de RSVP:%0A• *Nombre:* ${encodeURIComponent(name)}%0A• *Asistencia:* ${encodeURIComponent(attendance)}`;
+
+      window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+      closeRSVP();
+    }
+
+    // Lightbox
+    function openLightbox(src, alt) {
+      const lightbox = document.getElementById('imageLightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.alt = alt || 'Foto en grande';
+      lightbox.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('imageLightbox').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
