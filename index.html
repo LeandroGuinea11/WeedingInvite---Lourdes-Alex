@@ -690,13 +690,21 @@
       step2.classList.remove('hidden');
     }
 
-    // Ocultar primera vista y posicionar scroll en el inicio absoluto
+    // Ocultar primera vista, posicionar scroll en el inicio absoluto y REPRODUCIR MÚSICA AUTOMÁTICAMENTE
     function enterInvitation() {
       const overlay = document.getElementById('envelopeOverlay');
       overlay.classList.add('opacity-0');
       
       // Forzar posición en la parte superior de la página
       window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Reproducir la canción al hacer clic en "Abre nuestra invitación"
+      const audio = document.getElementById('weddingAudio');
+      if (audio) {
+        audio.play().then(() => {
+          updatePlayIcon(true);
+        }).catch(e => console.log('Error de reproducción automática de audio:', e));
+      }
 
       setTimeout(() => {
         overlay.classList.add('hidden');
